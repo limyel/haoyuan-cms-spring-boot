@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class HaoyuanCmsSpringBootApplication {
+public class HaoyuanCmsApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(HaoyuanCmsSpringBootApplication.class, args);
+        SpringApplication.run(HaoyuanCmsApplication.class, args);
     }
 
 }

@@ -1,0 +1,10 @@
+server:
+  port: 5000
+
+spring:
+  datasource:
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/haoyuan?useSSL=false&serverTimezone=UTC&characterEncoding=UTF8
+

@@ -3,3 +3,12 @@ spring:
     active: dev
   mandatory-file-encoding: UTF-8
 
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+  global-config:
+    banner: false
+    db-config:
+      logic-delete-value: NOW()
+      logic-not-delete-value: 'NULL'
+  mapper-locations: classpath:mapper/*.xml

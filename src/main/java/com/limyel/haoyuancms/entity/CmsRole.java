@@ -3,6 +3,9 @@ package com.limyel.haoyuancms.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -14,6 +17,8 @@ import java.time.LocalDateTime;
  * @author limyel
  * @since 2022-07-10
  */
+@Getter
+@Setter
 @TableName("cms_role")
 public class CmsRole extends BaseEntity implements Serializable {
 

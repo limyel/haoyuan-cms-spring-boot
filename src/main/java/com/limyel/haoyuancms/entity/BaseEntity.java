@@ -15,15 +15,15 @@ import java.util.Date;
 public class BaseEntity {
 
     @TableId(value = "id", type = IdType.AUTO)
-    private Long id;
+    protected Long id;
 
     @JsonIgnore
-    private LocalDateTime createTime;
+    protected LocalDateTime createTime;
 
     @JsonIgnore
-    private LocalDateTime updateTime;
+    protected LocalDateTime updateTime;
 
     @TableLogic
     @JsonIgnore
-    private LocalDateTime deleteTime;
+    protected LocalDateTime deleteTime;
 }

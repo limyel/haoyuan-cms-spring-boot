@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Getter
@@ -17,12 +18,12 @@ public class BaseEntity {
     private Long id;
 
     @JsonIgnore
-    private Date createTime;
+    private LocalDateTime createTime;
 
     @JsonIgnore
-    private Date updateTime;
+    private LocalDateTime updateTime;
 
     @TableLogic
     @JsonIgnore
-    private Date deleteTime;
+    private LocalDateTime deleteTime;
 }

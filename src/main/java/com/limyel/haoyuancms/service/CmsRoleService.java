@@ -2,7 +2,6 @@ package com.limyel.haoyuancms.service;
 
 import com.limyel.haoyuancms.entity.CmsRole;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.limyel.haoyuancms.entity.enumeration.CmsRoleLevelEnum;
 
 import java.util.List;
 
@@ -16,10 +15,5 @@ import java.util.List;
  */
 public interface CmsRoleService extends IService<CmsRole> {
 
-    List<CmsRole> listRoleByLevel(CmsRoleLevelEnum level);
-
-    List<Long> listRoleIdByLevel(CmsRoleLevelEnum level);
-
-    List<CmsRole> listRoleByUserId(Long userId);
 
 }

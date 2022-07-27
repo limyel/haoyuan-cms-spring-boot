@@ -4,6 +4,7 @@ import com.limyel.haoyuancms.entity.CmsPermission;
 import com.limyel.haoyuancms.mapper.CmsPermissionMapper;
 import com.limyel.haoyuancms.service.CmsPermissionService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -16,5 +17,8 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class CmsPermissionServiceImpl extends ServiceImpl<CmsPermissionMapper, CmsPermission> implements CmsPermissionService {
+
+    @Autowired
+    private CmsPermissionMapper cmsPermissionMapper;
 
 }

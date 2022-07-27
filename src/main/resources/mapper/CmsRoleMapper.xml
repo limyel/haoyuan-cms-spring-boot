@@ -2,31 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.limyel.haoyuancms.mapper.CmsRoleMapper">
 
-    <resultMap id="BaseResultMap" type="com.limyel.haoyuancms.entity.CmsRole">
-        <id column="id" property="id"/>
-        <result column="name" property="name"/>
-        <result column="info" property="info"/>
-        <result column="level" property="level" typeHandler="com.baomidou.mybatisplus.core.handlers.MybatisEnumTypeHandler"/>
-        <result column="create_time" property="createTime"/>
-        <result column="update_time" property="updateTime"/>
-        <result column="delete_time" property="deleteTime"/>
-    </resultMap>
 
-    <select id="selectRoleByUserId" resultMap="BaseResultMap">
-        select r.id, r.name, r.info, r.level, r.create_time, r.update_time, r.delete_time
-        from cms_role as r
-        where
-        r.id in
-        (
-        select ur.role_id
-        from cms_user as u
-        left join cms_user_role as ur
-        on u.id = ur.user_id
-        where u.id = #{userId}
-        and
-        u.delete_time is null
-        )
-        and r.delete_time is null
-    </select>
 
 </mapper>

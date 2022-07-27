@@ -34,9 +34,7 @@ public class CmsRole extends BaseEntity implements Serializable {
      */
     private String info;
 
-    /**
-     * 角色级别, 1:root, 2:guest, 3:user
-     */
+
     private Integer level;
 
 }

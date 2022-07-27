@@ -6,7 +6,6 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.limyel.haoyuancms.entity.CmsUser;
 import com.limyel.haoyuancms.entity.CmsUserRole;
-import com.limyel.haoyuancms.entity.enumeration.CmsRoleLevelEnum;
 import com.limyel.haoyuancms.mapper.CmsUserMapper;
 import com.limyel.haoyuancms.mapper.CmsUserRoleMapper;
 import com.limyel.haoyuancms.service.CmsRoleService;
@@ -40,18 +39,20 @@ public class CmsUserServiceImpl extends ServiceImpl<CmsUserMapper, CmsUser> impl
 
     @Override
     public List<Long> listRootUserId() {
-        List<Long> roleIdList = this.cmsRoleService.listRoleIdByLevel(CmsRoleLevelEnum.ROOT);
-        LambdaQueryWrapper<CmsUserRole> queryWrapper = Wrappers.lambdaQuery();
-        queryWrapper.in(CmsUserRole::getRoleId, roleIdList);
-        return this.cmsUserRoleMapper.selectList(queryWrapper)
-                .stream()
-                .map(CmsUserRole::getUserId)
-                .collect(Collectors.toList());
+//        List<Long> roleIdList = this.cmsRoleService.listRoleIdByLevel(CmsRoleLevelEnum.ROOT);
+//        LambdaQueryWrapper<CmsUserRole> queryWrapper = Wrappers.lambdaQuery();
+//        queryWrapper.in(CmsUserRole::getRoleId, roleIdList);
+//        return this.cmsUserRoleMapper.selectList(queryWrapper)
+//                .stream()
+//                .map(CmsUserRole::getUserId)
+//                .collect(Collectors.toList());
+        return null;
     }
 
     @Override
     public IPage<CmsUser> pageUserByRoleId(Page<CmsUser> page, Long roleId) {
-        List<Long> rootRoleIdList = this.cmsRoleService.listRoleIdByLevel(CmsRoleLevelEnum.ROOT);
-        return this.cmsUserMapper.selectPageByRoleId(page, roleId, rootRoleIdList);
+//        List<Long> rootRoleIdList = this.cmsRoleService.listRoleIdByLevel(CmsRoleLevelEnum.ROOT);
+//        return this.cmsUserMapper.selectPageByRoleId(page, roleId, rootRoleIdList);
+        return null;
     }
 }

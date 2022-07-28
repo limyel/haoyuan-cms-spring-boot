@@ -2,12 +2,14 @@ package com.limyel.haoyuancms.service;
 
 import cn.hutool.core.codec.Base64;
 import com.google.code.kaptcha.impl.DefaultKaptcha;
+import com.limyel.haoyuancms.common.exception.HttpException;
 import com.limyel.haoyuancms.common.util.RedisKey;
 import com.limyel.haoyuancms.common.util.RedisUtil;
 import com.limyel.haoyuancms.vo.CaptchaVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -47,6 +49,14 @@ public class CaptchaService {
         vo.setCaptcha(this.base64Img(base64));
 
         return vo;
+    }
+
+    public boolean verifyCaptcha(String tag, String captcha) {
+        String text = redisUtil.get(RedisKey.getCaptchaKey(tag));
+        if (ObjectUtils.isEmpty(text)) {
+            throw new HttpException(10001);
+        }
+        return false;
     }
 
     private String bindCaptcha(String captcha) {

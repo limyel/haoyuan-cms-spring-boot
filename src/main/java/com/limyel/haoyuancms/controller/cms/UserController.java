@@ -35,11 +35,11 @@ public class UserController {
         return captchaService.generateCaptcha();
     }
 
-    @ApiOperation("/登录")
+    @ApiOperation("登录")
     @PostMapping("/login")
     public TokenVO login(
             @RequestBody @Validated LoginDTO loginDTO,
-            @RequestHeader("tag") String tag) {
-        
+            @RequestHeader(value = "tag") String tag) {
+        return null;
     }
 }

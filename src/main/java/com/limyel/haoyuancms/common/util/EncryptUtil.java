@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
+import java.nio.charset.Charset;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.KeySpec;
@@ -33,7 +34,7 @@ public class EncryptUtil {
         } catch (NoSuchAlgorithmException e) {
             System.out.println("无法检索 pbkdf2_sha256 算法："+e);
         }
-        KeySpec keySpec = new PBEKeySpec(password.toCharArray(), Base64.getDecoder().decode(salt), iteration, length);
+        KeySpec keySpec = new PBEKeySpec(password.toCharArray(), salt.getBytes(Charset.forName("UTF-8")), iteration, length);
         SecretKey secret = null;
         try {
             secret = keyFactory.generateSecret(keySpec);

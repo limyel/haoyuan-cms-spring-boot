@@ -22,13 +22,11 @@ public class GlobalExceptionHandler {
     @Autowired
     private ExceptionCodeConfig exceptionCodeConfig;
 
-    private static final Integer INTERNAL_SERVER_ERROR_CODE = 9999;
-
     @ResponseBody
     @ResponseStatus(code = HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(Exception.class)
     public Result handleException(HttpServletRequest request, Exception e) {
-        return new Result<>(INTERNAL_SERVER_ERROR_CODE, exceptionCodeConfig.getMessage(INTERNAL_SERVER_ERROR_CODE));
+        return new Result<>(Result.INTERNAL_SERVER_ERROR_CODE, Result.INTERNAL_SERVER_ERROR_MSG);
     }
 
     @ExceptionHandler(HttpException.class)

@@ -9,8 +9,5 @@ import java.util.Map;
 
 public interface CmsAdminService {
 
-    Map<String, List<CmsPermission>> listPermission();
-
-    IPage<CmsUser> listUserByRoleId(Long roleId, Integer pageNum, Integer pageSize);
 
 }

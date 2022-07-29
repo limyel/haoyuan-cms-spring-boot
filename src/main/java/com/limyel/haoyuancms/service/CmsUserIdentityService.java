@@ -13,4 +13,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface CmsUserIdentityService extends IService<CmsUserIdentity> {
 
+    boolean verifyUsernamePassword(Long id, String username, String password);
+
 }

@@ -1,10 +1,12 @@
 package com.limyel.haoyuancms.common.exception;
 
+import com.limyel.haoyuancms.common.api.Result;
+
 import java.awt.*;
 
 public class HttpException extends RuntimeException {
 
-    protected Integer code;
+    protected Integer code = Result.INTERNAL_SERVER_ERROR_CODE;
 
     protected Integer httpStatusCode = 500;
 
@@ -18,6 +20,9 @@ public class HttpException extends RuntimeException {
 
     public HttpException(int code) {
         this.code = code;
+    }
+
+    public HttpException() {
     }
 
 }

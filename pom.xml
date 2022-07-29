@@ -22,6 +22,7 @@
         <kaptcha.version>2.3.2</kaptcha.version>
         <hutool.version>5.8.4</hutool.version>
         <commons-pool-2.version>2.11.1</commons-pool-2.version>
+        <jjwt.version>0.9.1</jjwt.version>
     </properties>
     <dependencies>
         <dependency>
@@ -120,6 +121,13 @@
             <groupId>io.springfox</groupId>
             <artifactId>springfox-boot-starter</artifactId>
             <version>3.0.0</version>
+        </dependency>
+
+        <!-- jwt -->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>${jjwt.version}</version>
         </dependency>
     </dependencies>
 

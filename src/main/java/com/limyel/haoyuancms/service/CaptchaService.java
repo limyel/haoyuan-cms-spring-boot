@@ -26,7 +26,7 @@ public class CaptchaService {
     @Autowired
     private DefaultKaptcha kaptcha;
 
-    @Value("${blog.captcha.expired:300}")
+    @Value("${haoyuan.captcha.expired:300}")
     private long expired;
 
     public static final String IMG_PREFIX = "data:image/png;base64,";
@@ -39,7 +39,7 @@ public class CaptchaService {
         try {
             ImageIO.write(image, "png", stream);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new HttpException();
         }
         String base64 = Base64.encode(stream.toByteArray());
 
@@ -51,12 +51,14 @@ public class CaptchaService {
         return vo;
     }
 
-    public boolean verifyCaptcha(String tag, String captcha) {
+    public void verifyCaptcha(String tag, String captcha) {
         String text = redisUtil.get(RedisKey.getCaptchaKey(tag));
         if (ObjectUtils.isEmpty(text)) {
             throw new HttpException(10001);
         }
-        return false;
+        if (!text.equals(captcha)) {
+            throw new HttpException(10002);
+        }
     }
 
     private String bindCaptcha(String captcha) {

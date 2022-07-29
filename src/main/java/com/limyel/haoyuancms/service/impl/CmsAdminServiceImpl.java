@@ -28,36 +28,5 @@ public class CmsAdminServiceImpl implements CmsAdminService {
     @Autowired
     private CmsUserService cmsUserService;
 
-    @Override
-    public Map<String, List<CmsPermission>> listPermission() {
-        LambdaQueryWrapper<CmsPermission> queryWrapper = Wrappers.lambdaQuery();
-        queryWrapper.eq(CmsPermission::getMount, true);
-        List<CmsPermission> permissionList = this.cmsPermissionService.list(queryWrapper);
-        Map<String, List<CmsPermission>> result = new HashMap<>();
-        permissionList.forEach(cmsPermission -> {
-            if (result.containsKey(cmsPermission.getModule())) {
-                result.get(cmsPermission.getModule()).add(cmsPermission);
-            } else {
-                ArrayList<CmsPermission> t = new ArrayList<>();
-                t.add(cmsPermission);
-                result.put(cmsPermission.getModule(), t);
-            }
-        });
-        return result;
-    }
 
-    @Override
-    public IPage<CmsUser> listUserByRoleId(Long roleId, Integer pageNum, Integer pageSize) {
-        Page<CmsUser> page = Page.of(pageNum, pageSize);
-        IPage<CmsUser> iPage;
-        if (ObjectUtils.isEmpty(roleId)) {
-            LambdaQueryWrapper<CmsUser> queryWrapper = new LambdaQueryWrapper<>();
-            List<Long> rootUserIdList = this.cmsUserService.listRootUserId();
-            queryWrapper.notIn(CmsUser::getId, rootUserIdList);
-            iPage = this.cmsUserService.page(page, queryWrapper);
-        } else {
-
-        }
-        return null;
-    }
 }

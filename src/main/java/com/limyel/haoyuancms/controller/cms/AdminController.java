@@ -2,14 +2,12 @@ package com.limyel.haoyuancms.controller.cms;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.limyel.haoyuancms.common.api.PageData;
-import com.limyel.haoyuancms.common.api.Result;
-import com.limyel.haoyuancms.core.annotation.CosmoController;
+import com.limyel.haoyuancms.common.annotation.CosmoController;
 import com.limyel.haoyuancms.entity.CmsPermission;
 import com.limyel.haoyuancms.entity.CmsUser;
 import com.limyel.haoyuancms.service.CmsAdminService;
 import com.limyel.haoyuancms.vo.CmsUserInfoVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,17 +24,4 @@ public class AdminController {
     @Autowired
     private CmsAdminService cmsAdminService;
 
-    @GetMapping("/permission")
-    public Map<String, List<CmsPermission>> listPermission() {
-        return cmsAdminService.listPermission();
-    }
-
-    @GetMapping("/user")
-    public PageData<CmsUserInfoVO> listUser(
-            @RequestParam(value = "roleId", required = false) Long roleId,
-            @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
-            @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize) {
-        IPage<CmsUser> iPage = cmsAdminService.listUserByRoleId(roleId, pageNum, pageSize);
-        return null;
-    }
 }

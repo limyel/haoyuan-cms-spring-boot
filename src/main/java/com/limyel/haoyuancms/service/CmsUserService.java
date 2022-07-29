@@ -17,13 +17,6 @@ import java.util.List;
  */
 public interface CmsUserService extends IService<CmsUser> {
 
-    /**
-     * 获取超级管理员 id。
-     *
-     * @return
-     */
-    List<Long> listRootUserId();
-
-    IPage<CmsUser> pageUserByRoleId(Page<CmsUser> page, Long roleId);
+    CmsUser getCmsUserByUsername(String username);
 
 }

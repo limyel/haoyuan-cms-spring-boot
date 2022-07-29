@@ -38,21 +38,9 @@ public class CmsUserServiceImpl extends ServiceImpl<CmsUserMapper, CmsUser> impl
     private CmsUserRoleMapper cmsUserRoleMapper;
 
     @Override
-    public List<Long> listRootUserId() {
-//        List<Long> roleIdList = this.cmsRoleService.listRoleIdByLevel(CmsRoleLevelEnum.ROOT);
-//        LambdaQueryWrapper<CmsUserRole> queryWrapper = Wrappers.lambdaQuery();
-//        queryWrapper.in(CmsUserRole::getRoleId, roleIdList);
-//        return this.cmsUserRoleMapper.selectList(queryWrapper)
-//                .stream()
-//                .map(CmsUserRole::getUserId)
-//                .collect(Collectors.toList());
-        return null;
-    }
-
-    @Override
-    public IPage<CmsUser> pageUserByRoleId(Page<CmsUser> page, Long roleId) {
-//        List<Long> rootRoleIdList = this.cmsRoleService.listRoleIdByLevel(CmsRoleLevelEnum.ROOT);
-//        return this.cmsUserMapper.selectPageByRoleId(page, roleId, rootRoleIdList);
-        return null;
+    public CmsUser getCmsUserByUsername(String username) {
+        LambdaQueryWrapper<CmsUser> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(CmsUser::getUsername, username);
+        return cmsUserMapper.selectOne(queryWrapper);
     }
 }

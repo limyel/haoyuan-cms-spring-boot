@@ -11,6 +11,10 @@ public class Result<T> implements Serializable {
 
     private static final long serialVersionUID = -1L;
 
+    public static final Integer INTERNAL_SERVER_ERROR_CODE = 9999;
+
+    public static final String INTERNAL_SERVER_ERROR_MSG = "服务器异常";
+
     public static final Integer SUCCESS_CODE = 0;
 
     public static final String SUCCESS_MSG = "成功";

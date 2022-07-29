@@ -26,11 +26,13 @@ public class GlobalExceptionHandler {
     @ResponseStatus(code = HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(Exception.class)
     public Result handleException(HttpServletRequest request, Exception e) {
+        e.printStackTrace();
         return new Result<>(Result.INTERNAL_SERVER_ERROR_CODE, Result.INTERNAL_SERVER_ERROR_MSG);
     }
 
     @ExceptionHandler(HttpException.class)
     public ResponseEntity<Result> handleHttpException(HttpServletRequest request, HttpException e) {
+        e.printStackTrace();
         Result result = new Result(e.getCode(), exceptionCodeConfig.getMessage(e.getCode()));
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);

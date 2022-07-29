@@ -15,7 +15,7 @@ import java.util.Map;
 @Component
 public class JwtUtil {
 
-    public static final String CLAIM_KEY_USERNAME = "username";
+    public static final String CLAIM_KEY_ID = "id";
 
     public static final String CLAIM_KEY_CREATE_TIME = "createTime";
 
@@ -53,7 +53,7 @@ public class JwtUtil {
 
     public String generateToken(CmsUser cmsUser) {
         Map<String, Object> claims = new HashMap<>();
-        claims.put(CLAIM_KEY_USERNAME, cmsUser.getUsername());
+        claims.put(CLAIM_KEY_ID, cmsUser.getId());
         claims.put(CLAIM_KEY_CREATE_TIME, new Date());
         return this.generateToken(claims);
     }

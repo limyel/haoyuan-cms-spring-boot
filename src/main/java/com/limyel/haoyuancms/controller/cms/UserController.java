@@ -2,7 +2,9 @@ package com.limyel.haoyuancms.controller.cms;
 
 import cn.hutool.core.codec.Base64;
 import com.google.code.kaptcha.impl.DefaultKaptcha;
+import com.limyel.haoyuancms.common.annotation.CosmoController;
 import com.limyel.haoyuancms.common.exception.HttpException;
+import com.limyel.haoyuancms.common.util.JwtUtil;
 import com.limyel.haoyuancms.core.token.Token;
 import com.limyel.haoyuancms.dto.LoginDTO;
 import com.limyel.haoyuancms.entity.CmsUser;
@@ -27,6 +29,7 @@ import java.io.IOException;
 
 @Slf4j
 @Api(tags = "cms用户相关接口")
+@CosmoController
 @RestController
 @RequestMapping("/cms/user")
 public class UserController {
@@ -40,6 +43,9 @@ public class UserController {
     @Autowired
     private CmsUserIdentityService cmsUserIdentityService;
 
+    @Autowired
+    private JwtUtil jwtUtil;
+
     @ApiOperation("生成验证码")
     @GetMapping("/captcha")
     public CaptchaVO getCaptcha() {
@@ -48,7 +54,7 @@ public class UserController {
 
     @ApiOperation("登录")
     @PostMapping("/login")
-    public TokenVO login(
+    public String login(
             @RequestBody @Validated LoginDTO loginDTO,
             @RequestHeader(value = "tag") String tag) {
         captchaService.verifyCaptcha(tag, loginDTO.getCaptcha());
@@ -61,6 +67,6 @@ public class UserController {
         if (!valid) {
             throw new HttpException(10004);
         }
-        return null;
+        return jwtUtil.generateToken(user);
     }
 }

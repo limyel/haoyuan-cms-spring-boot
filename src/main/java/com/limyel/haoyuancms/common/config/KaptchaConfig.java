@@ -19,6 +19,7 @@ public class KaptchaConfig {
         properties.setProperty(KAPTCHA_TEXTPRODUCER_CHAR_LENGTH, "4");
         properties.setProperty(KAPTCHA_IMAGE_HEIGHT, "40");
         properties.setProperty(KAPTCHA_IMAGE_WIDTH, "120");
+        properties.setProperty(KAPTCHA_TEXTPRODUCER_FONT_SIZE, "30");
         Config config = new Config(properties);
         defaultKaptcha.setConfig(config);
         return defaultKaptcha;

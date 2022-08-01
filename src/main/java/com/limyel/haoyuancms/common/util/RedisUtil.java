@@ -71,6 +71,12 @@ public class RedisUtil {
         return get(key, NOT_EXPIRE);
     }
 
+    public String getDel(String key) {
+        String value = this.get(key);
+        this.delete(key);
+        return value;
+    }
+
     public void delete(String key) {
         redisTemplate.delete(key);
     }

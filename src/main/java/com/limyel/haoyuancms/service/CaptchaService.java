@@ -52,7 +52,7 @@ public class CaptchaService {
     }
 
     public void verifyCaptcha(String tag, String captcha) {
-        String text = redisUtil.get(RedisKey.getCaptchaKey(tag));
+        String text = redisUtil.getDel(RedisKey.getCaptchaKey(tag));
         if (ObjectUtils.isEmpty(text)) {
             throw new HttpException(10001);
         }

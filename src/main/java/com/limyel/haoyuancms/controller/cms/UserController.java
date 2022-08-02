@@ -64,6 +64,6 @@ public class UserController {
     @ApiOperation("当前用户权限")
     @GetMapping("/permission")
     public UserPermissionVO getPermission() {
-
+        return null;
     }
 }

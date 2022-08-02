@@ -9,6 +9,7 @@ import com.limyel.haoyuancms.service.CaptchaService;
 import com.limyel.haoyuancms.service.CmsUserIdentityService;
 import com.limyel.haoyuancms.service.CmsUserService;
 import com.limyel.haoyuancms.vo.CaptchaVO;
+import com.limyel.haoyuancms.vo.UserPermissionVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -49,7 +50,7 @@ public class UserController {
             @RequestHeader(value = "tag") String tag) {
         captchaService.verifyCaptcha(tag, loginDTO.getCaptcha());
 
-        CmsUser user = cmsUserService.getCmsUserByUsername(loginDTO.getUsername());
+        CmsUser user = cmsUserService.getByUsername(loginDTO.getUsername());
         if (ObjectUtils.isEmpty(user)) {
             throw new HttpException(10003);
         }
@@ -58,5 +59,11 @@ public class UserController {
             throw new HttpException(10004);
         }
         return jwtUtil.generateToken(user);
+    }
+
+    @ApiOperation("当前用户权限")
+    @GetMapping("/permission")
+    public UserPermissionVO getPermission() {
+
     }
 }

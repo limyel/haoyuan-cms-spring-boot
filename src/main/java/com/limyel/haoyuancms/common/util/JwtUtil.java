@@ -1,5 +1,6 @@
 package com.limyel.haoyuancms.common.util;
 
+import com.limyel.haoyuancms.common.exception.HttpException;
 import com.limyel.haoyuancms.entity.CmsUser;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -8,9 +9,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import javax.swing.text.html.Option;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 @Component
 public class JwtUtil {
@@ -38,12 +41,16 @@ public class JwtUtil {
                 .compact();
     }
 
-    private Claims getClaimsFromToken(String token) {
+    public Claims getClaims(String token) {
         Claims claims = null;
-        claims = Jwts.parser()
-                .setSigningKey(this.secret)
-                .parseClaimsJws(token)
-                .getBody();
+        try {
+            claims = Jwts.parser()
+                    .setSigningKey(this.secret)
+                    .parseClaimsJws(token)
+                    .getBody();
+        } catch (Exception e) {
+            throw new HttpException(10011);
+        }
         return claims;
     }
 

@@ -17,6 +17,6 @@ import java.util.List;
  */
 public interface CmsUserService extends IService<CmsUser> {
 
-    CmsUser getCmsUserByUsername(String username);
+    CmsUser getByUsername(String username);
 
 }

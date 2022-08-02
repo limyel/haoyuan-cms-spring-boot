@@ -38,7 +38,7 @@ public class CmsUserServiceImpl extends ServiceImpl<CmsUserMapper, CmsUser> impl
     private CmsUserRoleMapper cmsUserRoleMapper;
 
     @Override
-    public CmsUser getCmsUserByUsername(String username) {
+    public CmsUser getByUsername(String username) {
         LambdaQueryWrapper<CmsUser> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(CmsUser::getUsername, username);
         return cmsUserMapper.selectOne(queryWrapper);

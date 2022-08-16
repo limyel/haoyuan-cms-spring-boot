@@ -9,7 +9,7 @@ import com.limyel.haoyuancms.service.CaptchaService;
 import com.limyel.haoyuancms.service.CmsUserIdentityService;
 import com.limyel.haoyuancms.service.CmsUserService;
 import com.limyel.haoyuancms.vo.CaptchaVO;
-import com.limyel.haoyuancms.vo.UserPermissionVO;
+import com.limyel.haoyuancms.vo.CmsUserPermissionVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.*;
 @CosmoController
 @RestController
 @RequestMapping("/cms/user")
-public class UserController {
+public class CmsUserController {
 
     @Autowired
     private CaptchaService captchaService;
@@ -63,7 +63,7 @@ public class UserController {
 
     @ApiOperation("当前用户权限")
     @GetMapping("/permission")
-    public UserPermissionVO getPermission() {
+    public CmsUserPermissionVO getPermission() {
         return null;
     }
 }

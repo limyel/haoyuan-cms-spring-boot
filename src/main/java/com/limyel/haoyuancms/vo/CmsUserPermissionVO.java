@@ -8,7 +8,7 @@ import java.util.Map;
 
 @Getter
 @Setter
-public class UserPermissionVO {
+public class CmsUserPermissionVO {
 
     private Long id;
 
